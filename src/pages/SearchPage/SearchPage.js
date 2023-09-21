@@ -1,5 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { BrowserRouter, Route, Link } from "react-router-dom";
+import BookDetailPage from "../BookDetailsPage/BookDetailsPage";
 
 const SearchPage = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -14,9 +16,12 @@ const SearchPage = (props) => {
       const response = await fetch(apiUrl);
       const data = await response.json();
 
-      const bookTitles = data.items.map((items) => items.volumeInfo.title);
+      const books = data.items.map((item) => ({
+        title: item.volumeInfo.title,
+        bookId: item.id, // You can use 'item.id' as the bookId
+      }));
 
-      setSearchResults(bookTitles);
+      setSearchResults(books);
     } catch (error) {
       console.error("Error fetching data from google api: ", error);
     }
@@ -29,27 +34,31 @@ const SearchPage = (props) => {
   };
 
   return (
-    <div>
-      <h1>Book Search</h1>
-      <input
-        type="text"
-        placeholder="Enter a book title"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      <button onClick={HandleSearch}>Search</button>
+    
+      <div>
+        <h1>Book Search</h1>
+        <input
+          type="text"
+          placeholder="Enter a book title"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <button onClick={HandleSearch}>Search</button>
 
-      {searchResults.length > 0 && (
-        <div>
-          <h2>Search Results:</h2>
-          <ul>
-            {searchResults.map((title, index) => (
-              <li key={index}>{title}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-    </div>
+        {searchResults.length > 0 && (
+          <div>
+            <h2>Search Results:</h2>
+            <ul>
+              {searchResults.map((book, index) => (
+                <li key={index}>
+                  <Link to={`/book/${book.bookId}`}>{book.title}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    
   );
 };
 
