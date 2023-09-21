@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Book = ({ thumbnailUrl, description, title, arthur }) => {
+const Book = ({ thumbnailUrl, description, title, arthurs }) => {
   return (
     <div>
       <div>
@@ -10,7 +10,7 @@ const Book = ({ thumbnailUrl, description, title, arthur }) => {
         </div>
         <div>
           <h3>{title}</h3>
-          <h4>{arthur}</h4>
+          <h4>{arthurs}</h4>
           <p>{description}</p>
         </div>
       </div>
