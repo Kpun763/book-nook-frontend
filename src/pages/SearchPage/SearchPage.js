@@ -34,31 +34,29 @@ const SearchPage = (props) => {
   };
 
   return (
-    
-      <div>
-        <h1>Book Search</h1>
-        <input
-          type="text"
-          placeholder="Enter a book title"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
-        <button onClick={HandleSearch}>Search</button>
+    <div>
+      <h1>Book Search</h1>
+      <input
+        type="text"
+        placeholder="Enter a book title"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
+      <button onClick={HandleSearch}>Search</button>
 
-        {searchResults.length > 0 && (
-          <div>
-            <h2>Search Results:</h2>
-            <ul>
-              {searchResults.map((book, index) => (
-                <li key={index}>
-                  <Link to={`/book/${book.bookId}`}>{book.title}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-    
+      {searchResults.length > 0 && (
+        <div>
+          <h2>Search Results:</h2>
+          <ul>
+            {searchResults.map((book, index) => (
+              <li key={index}>
+                <Link to={`/book/${book.bookId}`}>{book.title}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
   );
 };
 
