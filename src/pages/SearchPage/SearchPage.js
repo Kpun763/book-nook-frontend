@@ -1,13 +1,18 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
-import BookDetailPage from "../BookDetailsPage/BookDetailsPage";
+import { Link } from "react-router-dom";
 
 const SearchPage = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  const googleBookApiKey = "AIzaSyBZmkIqDVpw-NRuvGOjYm2TGGjEp-M1Bjo"; //The google Api Key
+  const googleBookApiKey = "AIzaSyBZmkIqDVpw-NRuvGOjYm2TGGjEp-M1Bjo"; // The google Api Key
+
+  useEffect(() => {
+    if (searchQuery) {
+      HandleSearch();
+    }
+  }, [searchQuery]);
 
   const HandleSearch = async () => {
     try {
@@ -18,19 +23,13 @@ const SearchPage = (props) => {
 
       const books = data.items.map((item) => ({
         title: item.volumeInfo.title,
-        bookId: item.id, // You can use 'item.id' as the bookId
+        bookId: item.id,
       }));
 
       setSearchResults(books);
     } catch (error) {
       console.error("Error fetching data from google api: ", error);
     }
-
-    useEffect(() => {
-      if (searchQuery) {
-        HandleSearch();
-      }
-    }, [searchQuery]);
   };
 
   return (
