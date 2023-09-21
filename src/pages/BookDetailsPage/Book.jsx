@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const Book = ({ thumbnailUrl, description, title, arthurs }) => {
+const Book = ({ thumbnailUrl, description, title, authors }) => {
   return (
     <div>
       <div>
@@ -10,7 +10,12 @@ const Book = ({ thumbnailUrl, description, title, arthurs }) => {
         </div>
         <div>
           <h3>{title}</h3>
-          <h4>{arthurs}</h4>
+          <h4>Authors:</h4>
+          <ul>
+            {authors.map((author, index) => (
+              <li key={index}>{author}</li>
+            ))}
+          </ul>
           <p>{description}</p>
         </div>
       </div>

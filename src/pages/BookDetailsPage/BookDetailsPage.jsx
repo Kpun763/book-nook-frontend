@@ -24,9 +24,10 @@ const BookDetailPage = ({}) => {
         title: volumeInfo.title || "No Title Available",
         authors: volumeInfo.authors || [],
         description: volumeInfo.description || "No description available",
-        thumbnailUrl: volumeInfo.imageLinks?.smallThumbnail || "",
+        thumbnailUrl: volumeInfo.imageLinks.smallThumbnail || "",
       };
 
+      console.log(bookInfo);
       setBookData(bookInfo);
     } catch (error) {
       console.warn("Error in fetchBook request: ", error);
@@ -43,7 +44,7 @@ const BookDetailPage = ({}) => {
         title={bookData.title}
         authors={bookData.authors}
         description={bookData.description}
-        thumbNailUrl={bookData.thumbnailUrl}
+        thumbnailUrl={bookData.thumbnailUrl}
       />
     </div>
   );

@@ -41,7 +41,6 @@ const SearchPage = (props) => {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-      <button onClick={HandleSearch}>Search</button>
 
       {searchResults.length > 0 && (
         <div>
