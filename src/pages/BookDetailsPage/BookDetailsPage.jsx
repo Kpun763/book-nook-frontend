@@ -6,16 +6,28 @@ import { useParams } from "react-router-dom";
 
 const BookDetailPage = ({}) => {
   const { id } = useParams();
-  const [book, setBook] = useState([]);
+  const [bookData, setBookData] = useState({
+    title: "",
+    authors: [],
+    description: "",
+    thumbnailUrl: "",
+  });
 
   const fetchBook = async () => {
     try {
       const response = await axios.get(
         `https://www.googleapis.com/books/v1/volumes/${id}?key=AIzaSyBZmkIqDVpw-NRuvGOjYm2TGGjEp-M1Bjo`
       );
-      console.log(response.data);
-      console.log(response);
-      setBook(response.data);
+
+      const volumeInfo = response.data.volumeInfo || {};
+      const bookInfo = {
+        title: volumeInfo.title || "No Title Available",
+        authors: volumeInfo.authors || [],
+        description: volumeInfo.description || "No description available",
+        thumbnailUrl: volumeInfo.imageLinks?.smallThumbnail || "",
+      };
+
+      setBookData(bookInfo);
     } catch (error) {
       console.warn("Error in fetchBook request: ", error);
     }
@@ -23,19 +35,18 @@ const BookDetailPage = ({}) => {
 
   useEffect(() => {
     fetchBook();
-  }, []);
+  }, [id]);
 
-  const bookDetails = book.filter((book) => (
-    <Book
-      key={book.id}
-      title={book.title}
-      arthurs={book.arthurs}
-      description={book.description}
-      smallThumbnailUrl={book.smallThumbnailUrl}
-    />
-  ));
-
-  return <div>{bookDetails}</div>;
+  return (
+    <div>
+      <Book
+        title={bookData.title}
+        authors={bookData.authors}
+        description={bookData.description}
+        thumbNailUrl={bookData.thumbnailUrl}
+      />
+    </div>
+  );
 };
 
 export default BookDetailPage;
