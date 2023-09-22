@@ -1,5 +1,5 @@
 import ReviewItem from "../ReviewItem/ReviewItem";
-const ReviewList = ({ reviews = [], AvgRating, title }) => {
+const ReviewList = ({ reviews = [], averageRating, title }) => {
   const reviewItems = reviews.map((review) => (
     <ReviewItem
       key={review.username}
@@ -13,7 +13,7 @@ const ReviewList = ({ reviews = [], AvgRating, title }) => {
     <div>
       <div>
         <h3>{title}: Reviews</h3>
-        <h3>{AvgRating}</h3>
+        <h3>{averageRating}</h3>
       </div>
       {reviewItems}
     </div>

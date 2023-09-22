@@ -17,6 +17,7 @@ const BookDetailPage = ({}) => {
   const [user, token] = useAuth();
 
   const [reviews, setReviews] = useState([]);
+  const [bookReviewData, setBookReviewData] = useState([]);
 
   const fetchBook = async () => {
     try {
@@ -50,20 +51,34 @@ const BookDetailPage = ({}) => {
       );
 
       console.log(response.data);
+
+      const bookReviewData = response.data || [];
+      setBookReviewData(bookReviewData);
+
       const bookReviews = response.data.reviews || [];
 
-      const reviewInfoArray = bookReviews.map((review) => ({
-        text: review.text || "No Text Available",
-        rating: review.rating || null,
-        username: review.user ? review.user.userName : "No Username Available",
-      }));
+      if (bookReviews.length === 0) {
+        // If there are no reviews, set a message in the reviews state
+        setReviews([
+          { text: "No book reviews available", rating: null, username: "N/A" },
+        ]);
+      } else {
+        // If there are reviews, extract and set the review information
+        const reviewInfoArray = bookReviews.map((review) => ({
+          text: review.text || "No Text Available",
+          rating: review.rating || null,
+          username: review.user
+            ? review.user.userName
+            : "No Username Available",
+        }));
 
-      setReviews(reviewInfoArray);
+        setReviews(reviewInfoArray);
+      }
     } catch (error) {
       console.warn("Error in fetchReviews request: ", error);
     }
   };
-
+  console.log(reviews);
   useEffect(() => {
     fetchBook();
     fetchReviews();
@@ -77,7 +92,11 @@ const BookDetailPage = ({}) => {
         description={bookData.description}
         thumbnailUrl={bookData.thumbnailUrl}
       />
-      <ReviewList reviews={reviews} />
+      <ReviewList
+        reviews={reviews}
+        title={bookData.title}
+        averageRating={bookReviewData.averageRating}
+      />
     </div>
   );
 };
