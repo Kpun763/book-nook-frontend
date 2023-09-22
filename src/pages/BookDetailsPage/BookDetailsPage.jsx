@@ -85,6 +85,22 @@ const BookDetailPage = ({}) => {
     fetchReviews();
   }, [id]);
 
+  const handleNewReview = async (newReview) => {
+    try {
+      const response = await axios.post(`https://localhost:5001/api/reviews`, {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+
+      const updatedReviews = response.data;
+
+      setReviews([...reviews, updatedReviews]);
+    } catch (error) {
+      console.warn("Error in handleNewReview request: ", error);
+    }
+  };
+
   return (
     <div>
       <Book
@@ -98,7 +114,7 @@ const BookDetailPage = ({}) => {
         title={bookData.title}
         averageRating={bookReviewData.averageRating}
       />
-      <ReviewForm />
+      <ReviewForm onNewReview={handleNewReview} bookId={id} />
     </div>
   );
 };

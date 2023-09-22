@@ -1,21 +1,22 @@
 import { useState } from "react";
 
-const ReviewForm = ({ onNewReview }) => {
+const ReviewForm = ({ onNewReview, bookId }) => {
   const [text, setText] = useState("");
-  const [rating, setRating] = useState("");
+  const [Rating, setRating] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = {
+      bookId,
       text,
-      rating,
+      Rating,
     };
     console.log(formData);
     onNewReview(formData);
   };
 
   return (
-    <form>
+    <form className="new-form" onSubmit={handleSubmit}>
       <div>
         <div>
           <h4>Leave a Review</h4>
@@ -29,7 +30,7 @@ const ReviewForm = ({ onNewReview }) => {
         </div>
         <div>
           <h5>Rating(1-5)</h5>
-          <input value={rating} onChange={(e) => setRating(e.target.value)} />
+          <input value={Rating} onChange={(e) => setRating(e.target.value)} />
         </div>
         <div>
           <button>Submit</button>
