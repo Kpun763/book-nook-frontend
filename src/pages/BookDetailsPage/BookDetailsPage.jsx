@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ReviewList from "../../components/ReviewList/ReviewList";
+import useAuth from "../../hooks/useAuth";
 
 const BookDetailPage = ({}) => {
   const { id } = useParams();
@@ -13,6 +14,9 @@ const BookDetailPage = ({}) => {
     description: "",
     thumbnailUrl: "",
   });
+  const [user, token] = useAuth();
+
+  const [reviews, setReviews] = useState([]);
 
   const fetchBook = async () => {
     try {
@@ -28,15 +32,41 @@ const BookDetailPage = ({}) => {
         thumbnailUrl: volumeInfo.imageLinks.smallThumbnail || "",
       };
 
-      console.log(bookInfo);
       setBookData(bookInfo);
     } catch (error) {
       console.warn("Error in fetchBook request: ", error);
     }
   };
 
+  const fetchReviews = async () => {
+    try {
+      let response = await axios.get(
+        `https://localhost:5001/api/bookdetails/${id}`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+
+      console.log(response.data);
+      const bookReviews = response.data.reviews || [];
+
+      const reviewInfoArray = bookReviews.map((review) => ({
+        text: review.text || "No Text Available",
+        rating: review.rating || null,
+        username: review.user ? review.user.userName : "No Username Available",
+      }));
+
+      setReviews(reviewInfoArray);
+    } catch (error) {
+      console.warn("Error in fetchReviews request: ", error);
+    }
+  };
+
   useEffect(() => {
     fetchBook();
+    fetchReviews();
   }, [id]);
 
   return (
@@ -47,7 +77,7 @@ const BookDetailPage = ({}) => {
         description={bookData.description}
         thumbnailUrl={bookData.thumbnailUrl}
       />
-      <ReviewList />
+      <ReviewList reviews={reviews} />
     </div>
   );
 };
