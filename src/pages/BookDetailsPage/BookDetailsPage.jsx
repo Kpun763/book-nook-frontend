@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import ReviewList from "../../components/ReviewList/ReviewList";
 import useAuth from "../../hooks/useAuth";
+import ReviewForm from "../../components/ReviewForm/ReviewForm";
 
 const BookDetailPage = ({}) => {
   const { id } = useParams();
@@ -97,6 +98,7 @@ const BookDetailPage = ({}) => {
         title={bookData.title}
         averageRating={bookReviewData.averageRating}
       />
+      <ReviewForm />
     </div>
   );
 };

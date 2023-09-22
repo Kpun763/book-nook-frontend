@@ -32,6 +32,12 @@ const SearchPage = () => {
     }
   };
 
+  const searchItem = searchResults.map((book, index) => (
+    <li key={index}>
+      <Link to={`/book/${book.bookId}`}>{book.title}</Link>
+    </li>
+  ));
+
   return (
     <div>
       <h1>Book Search</h1>
