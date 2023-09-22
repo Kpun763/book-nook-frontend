@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import ReviewList from "../../components/ReviewList/ReviewList";
 
 const BookDetailPage = ({}) => {
   const { id } = useParams();
@@ -46,6 +47,7 @@ const BookDetailPage = ({}) => {
         description={bookData.description}
         thumbnailUrl={bookData.thumbnailUrl}
       />
+      <ReviewList />
     </div>
   );
 };
