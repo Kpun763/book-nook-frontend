@@ -1,8 +1,18 @@
 import { useState } from "react";
 
-const ReviewForm = ({}) => {
+const ReviewForm = ({ onNewReview }) => {
   const [text, setText] = useState("");
   const [rating, setRating] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = {
+      text,
+      rating,
+    };
+    console.log(formData);
+    onNewReview(formData);
+  };
 
   return (
     <form>
@@ -11,11 +21,15 @@ const ReviewForm = ({}) => {
           <h4>Leave a Review</h4>
         </div>
         <div>
-          <input type="textarea" />
+          <input
+            type="textarea"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
         </div>
         <div>
           <h5>Rating(1-5)</h5>
-          <input />
+          <input value={rating} onChange={(e) => setRating(e.target.value)} />
         </div>
         <div>
           <button>Submit</button>
