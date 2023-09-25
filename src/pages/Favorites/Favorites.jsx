@@ -5,13 +5,15 @@ import { useEffect } from "react";
 
 const FavoritePage = ({}) => {
   const [user, token] = useAuth();
+  console.log(token);
   const fetchFavoriteBooks = async () => {
     try {
-      const response = await axios.get("https://localhost:5001/api/favorites", {
+      let response = await axios.get("https://localhost:5001/api/favorites", {
         headers: {
           Authorization: "Bearer " + token,
         },
       });
+      console.log(response.data);
     } catch (error) {
       console.warn("Error in fetchFavoriteBook request: ", error);
     }
