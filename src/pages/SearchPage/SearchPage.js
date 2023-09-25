@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import "./SearchPage.css";
 
 const SearchPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -40,8 +41,9 @@ const SearchPage = () => {
 
   return (
     <div>
-      <h1>Book Search</h1>
+      <h1 className="SearchTitle">Book Search:</h1>
       <input
+        className="SearchInput"
         type="text"
         placeholder="Enter a book title"
         value={searchQuery}
@@ -50,14 +52,15 @@ const SearchPage = () => {
 
       {searchResults.length > 0 && (
         <div>
-          <h2>Search Results:</h2>
-          <ul>
-            {searchResults.map((book, index) => (
-              <li key={index}>
-                <Link to={`/book/${book.bookId}`}>{book.title}</Link>
-              </li>
-            ))}
-          </ul>
+          <h2 className="SearchH2">Search Results:</h2>
+
+          {searchResults.map((book, index) => (
+            <div className="searchList" key={index}>
+              <Link to={`/book/${book.bookId}`}>
+                <div className="searchList">{book.title}</div>
+              </Link>
+            </div>
+          ))}
         </div>
       )}
     </div>

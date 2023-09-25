@@ -1,0 +1,23 @@
+.SearchTitle {
+  margin: 50px;
+}
+
+.SearchInput {
+  font-size: large;
+  padding: 10px;
+  position: absolute;
+  top: 150px;
+  left: 330px;
+}
+
+.SearchH2 {
+  position: absolute;
+  top: 235px;
+  left: 75px;
+}
+
+.searchList {
+  left: 50px;
+  margin: 5px;
+  padding: 8px;
+}
