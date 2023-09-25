@@ -21,7 +21,6 @@ const FavoritePage = ({}) => {
           Authorization: "Bearer " + token,
         },
       });
-      console.log(response.data);
       setfavoriteBooks(response.data);
     } catch (error) {
       console.warn("Error in fetchFavoriteBook request: ", error);

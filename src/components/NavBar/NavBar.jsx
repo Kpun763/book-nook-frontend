@@ -15,6 +15,19 @@ const Navbar = () => {
             <b>BookNook</b>
           </Link>
         </li>
+        <li className="Button">
+          <Link to="/search" style={{ textDecoration: "none", color: "white" }}>
+            <button>Search</button>
+          </Link>
+        </li>
+        <li className="Button">
+          <Link
+            to="/favorites"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            <button>Favorites</button>
+          </Link>
+        </li>
 
         <li>
           {user ? (

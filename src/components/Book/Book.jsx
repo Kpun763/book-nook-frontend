@@ -1,13 +1,32 @@
 import React from "react";
-import axios from "axios";
 
-const Book = ({ thumbnailUrl, description, title, authors, id }) => {
+const Book = ({
+  thumbnailUrl,
+  description,
+  title,
+  authors,
+  OnClickFavorite,
+  bookId,
+  userId,
+}) => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const favoriteData = {
+      bookId,
+      title,
+      thumbnailUrl,
+      userId,
+    };
+
+    OnClickFavorite(favoriteData);
+  };
+
   return (
     <div>
       <div>
         <img src={thumbnailUrl} alt={`Thumbnail for Book ${title}`} />
         <div>
-          <button>Favorite</button>
+          <button onClick={handleSubmit}>Favorite</button>
         </div>
         <div>
           <h3>{title}</h3>

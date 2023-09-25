@@ -8,7 +8,6 @@ import useAuth from "../../hooks/useAuth";
 import ReviewForm from "../../components/ReviewForm/ReviewForm";
 
 const BookDetailPage = ({}) => {
-    
   const { id } = useParams();
   const [bookData, setBookData] = useState({
     title: "",
@@ -17,7 +16,6 @@ const BookDetailPage = ({}) => {
     thumbnailUrl: "",
   });
   const [user, token] = useAuth();
-
   const [reviews, setReviews] = useState([]);
   const [bookReviewData, setBookReviewData] = useState([]);
 
@@ -107,6 +105,24 @@ const BookDetailPage = ({}) => {
     }
   };
 
+  const handleNewFavorite = async (OnClickFavorite) => {
+    try {
+      const response = await axios.post(
+        `https://localhost:5001/api/favorites`,
+        OnClickFavorite,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      console.log(response.data);
+      console.log(response);
+    } catch (error) {
+      console.warn("Error in handleNewFavorite request: ", error);
+    }
+  };
+
   return (
     <div>
       <Book
@@ -114,6 +130,9 @@ const BookDetailPage = ({}) => {
         authors={bookData.authors}
         description={bookData.description}
         thumbnailUrl={bookData.thumbnailUrl}
+        bookId={id}
+        userId={user.id}
+        OnClickFavorite={handleNewFavorite}
       />
       <ReviewList
         reviews={reviews}
@@ -123,7 +142,6 @@ const BookDetailPage = ({}) => {
       <ReviewForm onNewReview={handleNewReview} bookId={id} />
     </div>
   );
-
 };
 
 export default BookDetailPage;
