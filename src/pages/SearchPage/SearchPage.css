@@ -11,13 +11,26 @@
 }
 
 .SearchH2 {
+  text-decoration: none;
   position: absolute;
   top: 235px;
   left: 75px;
 }
 
 .searchList {
+  text-decoration: none;
+  position: relative;
   left: 50px;
+  bottom: -20px;
   margin: 5px;
   padding: 8px;
+}
+
+.Link {
+  text-decoration: none;
+  color: rgb(78, 78, 78);
+}
+
+.Link :hover {
+  color: rgb(0, 0, 0);
 }

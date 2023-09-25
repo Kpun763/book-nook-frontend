@@ -2,6 +2,7 @@ import FavoriteBookItem from "../../components/FavoriteBookItem/FavoriteBookItem
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
+import "./Favorites.css";
 
 const FavoritePage = ({}) => {
   const [user, token] = useAuth();
@@ -32,7 +33,7 @@ const FavoritePage = ({}) => {
 
   return (
     <div>
-      <ul>{favoriteItems}</ul>
+      <div>{favoriteItems}</div>
     </div>
   );
 };

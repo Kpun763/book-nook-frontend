@@ -1,0 +1,18 @@
+.thumbnail {
+  position: relative;
+  bottom: -20px;
+  padding: 5px;
+  width: 150px;
+  height: 218px;
+  left: 50px;
+}
+
+.titleText {
+  position: relative;
+  left: 450px;
+  bottom: 100px;
+}
+
+hr {
+  color: rgba(179, 173, 173, 0.493);
+}

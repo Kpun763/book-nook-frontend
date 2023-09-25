@@ -1,9 +1,9 @@
 footer {
   position: fixed;
   bottom: 0;
-  font-size: 1.2rem;
+  font-size: 1;
   left: 0;
-  padding: 1rem;
+  padding: 0;
   text-align: center;
   width: 100%;
 }

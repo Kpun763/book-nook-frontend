@@ -1,19 +1,23 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./FavoriteBook.css";
 
 const FavoriteBookItem = ({ thumbnailUrl, title, bookId }) => {
   return (
-    <Link to={`/book/${bookId}`}>
-      <ul>
+    <Link className="Link" to={`/book/${bookId}`}>
+      <div>
         <div>
-          <div>
-            <img src={thumbnailUrl} alt={`Thumbnail for Book ${title}`} />
-          </div>
-          <div>
-            <h2>{title}</h2>
-          </div>
+          <img
+            className="thumbnail"
+            src={thumbnailUrl}
+            alt={`Thumbnail for Book ${title}`}
+          />
         </div>
-      </ul>
+        <div>
+          <h2 className="titleText">{title}</h2>
+        </div>
+        <hr />
+      </div>
     </Link>
   );
 };

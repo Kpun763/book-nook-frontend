@@ -56,7 +56,7 @@ const SearchPage = () => {
 
           {searchResults.map((book, index) => (
             <div className="searchList" key={index}>
-              <Link to={`/book/${book.bookId}`}>
+              <Link className="Link" to={`/book/${book.bookId}`}>
                 <div className="searchList">{book.title}</div>
               </Link>
             </div>
