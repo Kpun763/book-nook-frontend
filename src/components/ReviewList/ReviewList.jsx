@@ -1,14 +1,14 @@
 import ReviewItem from "../ReviewItem/ReviewItem";
 const ReviewList = ({ reviews = [], averageRating, title }) => {
-  const reviewItems = reviews.map((review) => (
+  const reviewItems = reviews.map((review, index) => (
     <ReviewItem
-      key={review.id}
+      key={index}
       username={review.username}
       text={review.text}
       rating={review.rating}
     />
   ));
-
+  console.log(reviewItems);
   return (
     <div>
       <div>
