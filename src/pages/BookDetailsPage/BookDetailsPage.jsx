@@ -8,6 +8,7 @@ import useAuth from "../../hooks/useAuth";
 import ReviewForm from "../../components/ReviewForm/ReviewForm";
 
 const BookDetailPage = ({}) => {
+    
   const { id } = useParams();
   const [bookData, setBookData] = useState({
     title: "",
@@ -122,6 +123,7 @@ const BookDetailPage = ({}) => {
       <ReviewForm onNewReview={handleNewReview} bookId={id} />
     </div>
   );
+
 };
 
 export default BookDetailPage;

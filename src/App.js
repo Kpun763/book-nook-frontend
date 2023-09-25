@@ -48,7 +48,7 @@ function App() {
           }
         />
         <Route
-          path="/Favorite"
+          path="/Favorites"
           element={
             <PrivateRoute>
               <FavoritePage />
