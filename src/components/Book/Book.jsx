@@ -1,4 +1,5 @@
 import React from "react";
+import "./Book.css";
 
 const Book = ({
   thumbnailUrl,
@@ -24,9 +25,15 @@ const Book = ({
   return (
     <div>
       <div>
-        <img src={thumbnailUrl} alt={`Thumbnail for Book ${title}`} />
+        <img
+          className="thumbnail"
+          src={thumbnailUrl}
+          alt={`Thumbnail for Book ${title}`}
+        />
         <div>
-          <button onClick={handleSubmit}>Favorite</button>
+          <button className="favButton" onClick={handleSubmit}>
+            Favorite
+          </button>
         </div>
         <div>
           <h3>{title}</h3>

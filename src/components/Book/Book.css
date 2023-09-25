@@ -1,0 +1,9 @@
+.thumbnail {
+  padding: 50px;
+}
+
+.favButton {
+  position: absolute;
+  left: 300px;
+  top: 300px;
+}
