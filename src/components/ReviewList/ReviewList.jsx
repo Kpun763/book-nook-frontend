@@ -2,7 +2,7 @@ import ReviewItem from "../ReviewItem/ReviewItem";
 const ReviewList = ({ reviews = [], averageRating, title }) => {
   const reviewItems = reviews.map((review) => (
     <ReviewItem
-      key={review.username}
+      key={review.id}
       username={review.username}
       text={review.text}
       rating={review.rating}

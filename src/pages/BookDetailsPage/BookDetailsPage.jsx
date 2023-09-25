@@ -85,17 +85,22 @@ const BookDetailPage = ({}) => {
     fetchReviews();
   }, [id]);
 
-  const handleNewReview = async (newReview) => {
+  const handleNewReview = async (onNewReview) => {
     try {
-      const response = await axios.post(`https://localhost:5001/api/reviews`, {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      });
+      const response = await axios.post(
+        `https://localhost:5001/api/reviews`,
+        onNewReview,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
 
       const updatedReviews = response.data;
 
       setReviews([...reviews, updatedReviews]);
+      fetchReviews();
     } catch (error) {
       console.warn("Error in handleNewReview request: ", error);
     }
