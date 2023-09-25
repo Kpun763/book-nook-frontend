@@ -1,0 +1,17 @@
+.titleReviews {
+  position: absolute;
+  top: 200px;
+  left: 70%;
+}
+
+.avgRating {
+  position: absolute;
+  top: 225px;
+  left: 70%;
+}
+
+.reviews {
+  position: absolute;
+  top: 475px;
+  left: 70%;
+}

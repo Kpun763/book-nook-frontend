@@ -1,0 +1,10 @@
+.reviewform {
+  position: absolute;
+  top: 270px;
+  left: 70%;
+}
+
+.review {
+  margin: 5;
+  padding: 5;
+}

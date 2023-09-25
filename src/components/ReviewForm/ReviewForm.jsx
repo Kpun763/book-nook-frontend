@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./ReviewForm.css";
 
 const ReviewForm = ({ onNewReview, bookId }) => {
   const [text, setText] = useState("");
@@ -16,13 +17,14 @@ const ReviewForm = ({ onNewReview, bookId }) => {
   };
 
   return (
-    <form className="new-form" onSubmit={handleSubmit}>
+    <form className="reviewform" onSubmit={handleSubmit}>
       <div>
         <div>
           <h4>Leave a Review</h4>
         </div>
         <div>
           <input
+            className="review"
             type="textarea"
             value={text}
             onChange={(e) => setText(e.target.value)}

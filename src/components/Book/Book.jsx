@@ -36,14 +36,14 @@ const Book = ({
           </button>
         </div>
         <div>
-          <h3>{title}</h3>
-          <h4>Authors:</h4>
-          <ul>
+          <h3 className="title">{title}</h3>
+          <h4 className="authors">Authors:</h4>
+          <ul className="authorsUL">
             {authors.map((author, index) => (
               <li key={index}>{author}</li>
             ))}
           </ul>
-          <p>{description}</p>
+          <p className="description">{description}</p>
         </div>
       </div>
     </div>

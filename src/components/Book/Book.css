@@ -1,9 +1,36 @@
 .thumbnail {
   padding: 50px;
+  width: 300px;
+  height: 400px;
 }
 
 .favButton {
   position: absolute;
   left: 300px;
-  top: 300px;
+  top: 370px;
+}
+
+.title {
+  position: absolute;
+  left: 300px;
+  top: 200px;
+}
+
+.authors {
+  position: absolute;
+  left: 300px;
+  top: 250px;
+}
+
+.authorsUL {
+  position: absolute;
+  left: 300px;
+  top: 275px;
+}
+
+.description {
+  position: absolute;
+  margin-right: 50%;
+  left: 50px;
+  top: 500px;
 }

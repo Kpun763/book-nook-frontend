@@ -1,4 +1,5 @@
 import ReviewItem from "../ReviewItem/ReviewItem";
+import "./ReviewList.css";
 const ReviewList = ({ reviews = [], averageRating, title }) => {
   const reviewItems = reviews.map((review, index) => (
     <ReviewItem
@@ -12,10 +13,10 @@ const ReviewList = ({ reviews = [], averageRating, title }) => {
   return (
     <div>
       <div>
-        <h3>{title}: Reviews</h3>
-        <h3>{averageRating}</h3>
+        <h3 className="titleReviews">{title}: Reviews</h3>
+        <h3 className="avgRating">{averageRating}</h3>
       </div>
-      {reviewItems}
+      <div className="reviews">{reviewItems}</div>
     </div>
   );
 };
