@@ -1,4 +1,4 @@
-const FavoriteBookItem = ({ thumbnailUrl, title, id }) => {
+const FavoriteBookItem = ({ thumbnailUrl, title, bookId }) => {
   return (
     <div>
       <div>

@@ -1,11 +1,19 @@
 import FavoriteBookItem from "../../components/FavoriteBookItem/FavoriteBookItem";
 import axios from "axios";
 import useAuth from "../../hooks/useAuth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const FavoritePage = ({}) => {
   const [user, token] = useAuth();
-  console.log(token);
+  const [favoriteBooks, setfavoriteBooks] = useState([]);
+  const favoriteItems = favoriteBooks.map((favorite) => (
+    <FavoriteBookItem
+      key={favorite.title}
+      title={favorite.title}
+      thumbnailUrl={favorite.thumbnailUrl}
+      bookId={favorite.bookId}
+    />
+  ));
   const fetchFavoriteBooks = async () => {
     try {
       let response = await axios.get("https://localhost:5001/api/favorites", {
@@ -14,6 +22,7 @@ const FavoritePage = ({}) => {
         },
       });
       console.log(response.data);
+      setfavoriteBooks(response.data);
     } catch (error) {
       console.warn("Error in fetchFavoriteBook request: ", error);
     }
@@ -24,11 +33,7 @@ const FavoritePage = ({}) => {
 
   return (
     <div>
-      <ul>
-        <li>
-          <FavoriteBookItem />
-        </li>
-      </ul>
+      <ul>{favoriteItems}</ul>
     </div>
   );
 };

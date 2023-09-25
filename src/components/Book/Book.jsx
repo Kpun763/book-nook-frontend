@@ -1,6 +1,7 @@
 import React from "react";
+import axios from "axios";
 
-const Book = ({ thumbnailUrl, description, title, authors }) => {
+const Book = ({ thumbnailUrl, description, title, authors, id }) => {
   return (
     <div>
       <div>
