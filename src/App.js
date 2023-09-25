@@ -9,6 +9,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import AddCarPage from "./pages/AddCarPage/AddCarPage";
 import SearchPage from "./pages/SearchPage/SearchPage";
 import BookDetailPage from "./pages/BookDetailsPage/BookDetailsPage";
+import FavoritePage from "./pages/Favorites/Favorites";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -43,6 +44,14 @@ function App() {
           element={
             <PrivateRoute>
               <SearchPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/Favorite"
+          element={
+            <PrivateRoute>
+              <FavoritePage />
             </PrivateRoute>
           }
         />

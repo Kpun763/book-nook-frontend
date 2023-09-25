@@ -15,6 +15,7 @@ const Navbar = () => {
             <b>BookNook</b>
           </Link>
         </li>
+
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>
